@@ -1,0 +1,103 @@
+ion-content {
+    --background: #fff;
+    box-sizing: border-box;
+
+
+    .header {
+        display: flex;
+        justify-content: center;
+        padding: 1rem 1rem;
+        background: #5081ca;
+
+        ion-button {
+            ion-icon {
+                font-size: 2rem;
+            }
+        }
+    }
+
+
+
+    .profile  {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1rem;
+        position: relative;
+        background: #5081ca;
+        min-height: 150px;
+        border-bottom-left-radius: 30px;
+        border-bottom-right-radius: 30px;
+        padding-bottom: 90px;
+    }
+
+    .user {
+        font: size 3rem;
+        font-weight: 400;
+        color: #fff;
+        font-size: 2rem;
+        display: flex;
+        position: absolute;
+        text-align: center;
+        justify-content: center;
+        margin-top: 50%;
+        bottom: 2rem;
+    }
+
+    .avatar {
+        width: 125px;
+        height: 125px;
+        background-color: #5081ca;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        overflow: hidden;
+        border-top-left-radius: 90px;
+        border-bottom-left-radius: 90px;
+        border-bottom-right-radius: 90px;
+    }
+
+    .settings-card {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+    }
+
+    
+    .card {
+        background-color: #f3f3f3;
+        display: flex;
+        border-radius: 15px;
+        align-items: center;
+        margin-bottom: 1rem;
+        height: 100px;
+        font-size: 12px;
+
+        ion-icon  {
+            width: 35px;
+            height: 35px;
+            margin-left: 15px;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-left: 20px;
+            margin-right: 10px;
+        }
+
+        ion-toggle {
+            right: 1rem;
+        }
+
+        ion-button {
+            margin-right: 1rem;
+        }
+
+    }
+
+
+}
+
+ion-toolbar {
+    background: #5081ca;
+}

@@ -1,0 +1,86 @@
+<ion-content class="ion-padding">
+  <h1>Yeni Hesap Oluştur,</h1>
+  <h4>Yeni bir hesap oluşturarak uygulamamızı kullanmaya hemen başlayın!</h4>
+
+  <form [formGroup]="signupForm">
+
+    <div class="form-field">
+      <label class="label-focused">Ad Soyad</label>
+      <input type="text" (focus)="focused = true" formControlName="nameSurname" (blur)="onBlur($event)" />
+
+      <div style="position: absolute; bottom: 0; margin: 3px;" *ngIf="signupForm.get('nameSurname').invalid && signupForm.get('nameSurname').touched">
+        <span *ngIf="signupForm.get('nameSurname').errors.required">Lütfen Ad Soyad alanını doldurunuz.</span>
+        <span span *ngIf="signupForm.get('nameSurname').errors.minlength">Minimum 5 karakter girmelisiniz.</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Telefon Numarası</label>
+      <input maxlength="11" minlength="11" type="text" (focus)="focused = true" formControlName="phone"
+        (blur)="onBlur($event)" />
+    </div>
+
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">E-Posta Adresi (Opsiyonel)</label>
+      <input type="text" (focus)="focused = true" formControlName="email" (blur)="onBlur($event)" />
+    </div>
+
+    <div class="address">
+      <ion-item lines="none">
+        <ion-label>İl</ion-label>
+        <ion-select okText="Seç" cancelText="Vazgeç" placeholder="Seçiniz">
+          <ion-select-option value="f">İzmir</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>İlçe</ion-label>
+        <ion-select okText="Seç" cancelText="Vazgeç" placeholder="Seçiniz">
+          <ion-select-option value="f">Bornova</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label>Mahalle</ion-label>
+        <ion-select okText="Seç" cancelText="Vazgeç" placeholder="Seçiniz">
+          <ion-select-option value="f">Erzene Mah.</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Cadde/Sokak</label>
+      <input type="text" (focus)="focused = true" formControlName="email" (blur)="onBlur($event)" />
+    </div>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col style="margin-left: 2px;">
+          <div class="form-field">
+            <label [ngClass]="focused ? 'label-focused' : ''">Kapı No</label>
+            <input type="text" (focus)="focused = true" formControlName="email" (blur)="onBlur($event)" />
+          </div>
+        </ion-col>
+        <ion-col>
+          <div class="form-field">
+            <label [ngClass]="focused ? 'label-focused' : ''">Daire No</label>
+            <input type="text" (focus)="focused = true" formControlName="email" (blur)="onBlur($event)" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="policy">
+      <ion-list lines="none">
+        <ion-item>
+          <ion-checkbox (click)="openPopup($event)" class="ion-no-margin" slot="start"></ion-checkbox>
+          <ion-label text-wrap> Kullanım koşullarını okudum ve kabul ediyorum.</ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+
+    <app-button (click)="openToast()" label='Kayıt Ol'></app-button>
+  </form>
+
+  <p class="footer-text">Zaten hesabın var mı? <a routerLink="/login">Giriş Yap</a></p>
+</ion-content>

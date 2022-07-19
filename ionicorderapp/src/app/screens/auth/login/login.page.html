@@ -1,0 +1,17 @@
+<ion-content class="ion-padding">
+  <h1>Hoşgeldiniz,</h1>
+  <h3>Lütfen giriş yapınız!</h3>
+
+  <form>
+    <div class="form-field">
+      <label [ngClass]="focused ? 'label-focused' : ''">Telefon Numarası</label>
+      <input maxlength="11" [type]="type" (focus)="focused = true"  (blur)="onBlur($event)" />
+    </div>
+   
+    <a routerLink="#" class="forgot-password-link">Yeni bir cihaza mı geçtin?</a>
+
+    <app-button [routerLink]="['/sms-verification']"  label='Devam Et'></app-button>
+  </form>
+
+  <p class="footer-text">Hesabınız yok mu? <a routerLink="/signup">Kayıt Ol</a></p>
+</ion-content>

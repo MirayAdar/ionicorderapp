@@ -1,0 +1,16 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #5081ca;" text="Geri" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Son Siparişlerim</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="empty-cart">
+    <ion-icon name="water-outline"></ion-icon>    
+    <p>Hiç siparişiniz yok.</p>
+  </div>
+  <app-product-button  [routerLink]="['/home']"  >Sipariş Oluştur</app-product-button>
+</ion-content>

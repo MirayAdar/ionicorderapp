@@ -1,0 +1,18 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button style="color: #5081ca;" text="Geri" defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Adreslerim</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="empty-cart">
+    <ion-icon name="water-outline"></ion-icon>    
+    <p>Adres bilgisi bulunamadı.</p>
+  </div>
+  <app-product-button  [routerLink]="['create-address']"  >Adres Ekle</app-product-button>
+
+
+</ion-content>
