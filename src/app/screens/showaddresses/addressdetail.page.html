@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Adreslerim</ion-title>
+    <ion-buttons>
+      <ion-back-button text="" defaultHref="/home/settings">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="address">
+    <div class="address_header">
+      <h2 class="ion-text-center">Adres Düzenle</h2>
+      <p class="ion-text-center mt-3">Siparişinizi en kısa sürede ulaştırabilmemiz için lütfen adres detaylarını doğru
+        girdiğinizden emin olun.</p>
+    </div>
+
+    <div class="address_container">
+      <ion-list class="address_container-list" *ngFor="let ad of gid.customer.addresses">
+        <ion-item-sliding #sliding>
+          <ion-item>
+            <ion-label class="ion-padding">
+              <div class="address_container_head">
+                <div class="address-item">
+                  <ion-icon name="home"></ion-icon>
+                  <p class="ms-2">{{ad.addressTitle}}</p>
+                </div>
+                <div (click)="editAddress(ad.id)" class="address-item">
+                  <ion-icon name="create-outline"></ion-icon>
+                  <span class="ms-1">Düzenle</span>
+                </div>
+              </div>
+              <hr>
+              <div class="address_container-detail">{{ad.neighborhood.neighborhoodName}} Mahallesi
+                {{ad.street}} {{ad.street2}} {{ad.apartmentName}} Apartmanı No: {{ad.doorNo}} Kapı No:
+                {{ad.inDoorNo}} {{ad.district.districtName}}/{{ad.city.cityName}}<br>({{ad.addressDescription}})
+              </div>
+            </ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option color="danger" (click)="deleteAddress(ad.id)">
+              <ion-icon slot="icon-only" name="trash-outline">
+              </ion-icon>
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+      <ion-button class="address_container-addBtn ion-margin" (click)="addAddress()">Adres Ekle</ion-button>
+      <!-- <div class="address_container_head">
+      <ion-icon name="home"></ion-icon>
+      <div>{{gid.customer.addressTitle}}</div>
+
+    </div> -->
+    </div>
+  </div>
+
+
+</ion-content>

@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Profil Bilgilerim</ion-title>
+    <ion-buttons>
+      <ion-back-button text="" defaultHref="/home/settings"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h4 class="ion-padding">Bilgileri Düzenle</h4>
+  <div class="info_container">
+    <form class="ion-padding" [formGroup]="editProfileForm">
+      <div class="info_container-items">
+        <div>
+          <ion-item lines="none">
+            <ion-label class="text-label" position="floating">Ad
+            </ion-label>
+            <ion-input formControlName="name">
+            </ion-input>
+          </ion-item>
+          <div class="formControl" *ngIf="editProfileForm.get('name').invalid && editProfileForm.get('name').touched">
+            <span *ngIf="editProfileForm.get('name').errors.required">*Bu alan boş bırakılamaz.</span>
+          </div>
+        </div>
+        <div>
+          <ion-item lines="none">
+            <ion-label class="text-label" position="floating">Soyad
+            </ion-label>
+            <ion-input formControlName="surname">
+            </ion-input>
+          </ion-item>
+          <div class="formControl"
+            *ngIf="editProfileForm.get('surname').invalid && editProfileForm.get('surname').touched">
+            <span *ngIf="editProfileForm.get('surname').errors.required">*Bu alan boş bırakılamaz.</span>
+          </div>
+        </div>
+      </div>
+      <ion-item class="text-item" lines="none">
+        <ion-label position="floating">Telefon
+        </ion-label>
+        <ion-input [value]="gid.phone" disabled></ion-input>
+      </ion-item>
+
+      <ion-button class="info_container-addBtn" (click)="updateProfile()">Güncelle</ion-button>
+    </form>
+  </div>
+
+</ion-content>

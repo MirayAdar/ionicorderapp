@@ -1,0 +1,69 @@
+<ion-header collapse="fade" translucent="true">
+  <ion-toolbar color="primary">
+    <ion-buttons>
+      <ion-back-button text="" class="ml-1" defaultHref="/home/products"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profilim</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="profile">
+    <div class="avatar">
+      <ion-img src="assets/imgs/waterdrop.svg"></ion-img>
+    </div>
+    <div class="user">
+      {{gid.customer.name}} {{gid.customer.surname}}
+    </div>
+  </div>
+
+  <div class="settings-card">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="10" offset-md="1">
+          <ion-list>
+            <ion-item (click)="editProfileInfo()" lines="full" class="ion-margin-vertical">
+              <ion-icon name="person-circle-outline"></ion-icon>
+              <ion-label class="ion-margin-horizontal">Bilgilerim</ion-label>
+              <ion-buttons>
+                <ion-button>
+                  <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            <ion-item (click)="editAddressInfo()" lines="full" class="ion-margin-vertical">
+              <ion-icon name="home"></ion-icon>
+              <ion-label class="ion-margin-horizontal">Adreslerim</ion-label>
+              <ion-buttons>
+                <ion-button>
+                  <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            <ion-item lines="full" class="ion-margin-vertical">
+              <ion-icon name="hourglass-outline"></ion-icon>
+              <ion-label routerLink="/home/last-orders" class="ion-margin-horizontal">Geçmiş Siparişlerim
+              </ion-label>
+              <ion-buttons>
+                <ion-button (click)=updateProfileInfo()>
+                  <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            <ion-item lines="full" class="ion-margin-vertical">
+              <ion-icon name="exit-outline"></ion-icon>
+              <ion-label routerLink="/login" class="ion-margin-horizontal">
+                Oturumu
+                Kapat</ion-label>
+              <ion-buttons>
+                <ion-button (click)=updateProfileInfo()>
+                  <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -1,0 +1,71 @@
+.empty-order {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #c7c7c7;
+
+  ion-icon {
+    font-size: 10rem;
+  }
+
+  p {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}
+.last_orders {
+  &-item {
+    display: flex;
+    padding: 1rem 1rem 0 1rem;
+    .last_orders-info {
+      width: 35%;
+      ion-img {
+        margin-bottom: 6px;
+      }
+      p {
+        text-align: center;
+      }
+    }
+    .last_orders-details {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-left: 8px;
+      &-head {
+        display: flex;
+        justify-content: space-between;
+        h3 {
+          font-size: 17px;
+          font-weight: 600;
+        }
+        p {
+          background-color: gainsboro;
+          padding: 1px 5px;
+          border-radius: 10px;
+          font-weight: 700;
+          color: var(--ion-color-secondary-tint);
+          box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+        }
+      }
+      ion-button {
+        position: relative;
+        top: 15px;
+        align-self: end;
+        width: 30%;
+        height: 40px;
+        --background: var(--ion-color-danger-tint);
+        --border-radius: 15px;
+      }
+      .orders-statu {
+        align-self: end;
+        top: 2rem;
+        position: relative;
+        text-decoration: underline;
+        font-size: 0.9rem;
+        font-weight: bold;
+      }
+    }
+  }
+}

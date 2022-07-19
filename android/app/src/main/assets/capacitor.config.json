@@ -1,0 +1,15 @@
+{
+	"appId": "com.suuygulamasi.ionic",
+	"appName": "Su Uygulaması",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"PushNotifications": {
+			"presentationOptions": [
+				"badge",
+				"sound",
+				"alert"
+			]
+		}
+	}
+}

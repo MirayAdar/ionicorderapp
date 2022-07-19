@@ -1,0 +1,39 @@
+.favOrder {
+  padding: 10px;
+  &-item {
+    text-align: center;
+    font-size: 15px;
+    padding: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #ffc003;
+  }
+  ion-card {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+    ion-label {
+      display: flex;
+      ion-img {
+        width: 20%;
+      }
+      .itemInfos {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+    }
+    .confirmCartBtn {
+      --background: #f8f8ff;
+      border-radius: 20px;
+      align-self: center;
+      width: 40%;
+      font-weight: 600;
+      text-decoration-line: underline;
+      color: unset;
+      margin: 10px 0;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+  }
+}

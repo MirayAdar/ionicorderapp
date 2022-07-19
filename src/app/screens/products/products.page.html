@@ -1,0 +1,139 @@
+<ion-header collapse="fade" translucent="true">
+  <ion-toolbar color="primary">
+    <ion-title> {{ gid.appName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="activeaddress">
+    <div class="activeaddress_detail">
+      <ion-icon class="ms-2" name="home"></ion-icon>
+      <div class="activeaddress_detail-item">{{activeAddress.neighborhood.neighborhoodName}} Mahallesi
+        {{activeAddress.street}}{{activeAddress.street2}} Sokağı/Caddesi No: {{activeAddress.doorNo}}
+        {{activeAddress.apartmentName}} </div>
+    </div>
+    <ion-icon class="ms-3" style="width: 25px; align-self: center;" name="chevron-down-outline"
+      (click)="showAddresses()"></ion-icon>
+  </div>
+  <div class="choose-address" *ngIf="isOpen">
+    <div class="choose-address-item" style="margin-left: 1em;" *ngFor="let nactive of gid.getNotCurrentAddresses()"
+      (click)="changeActiveAddress(nactive.id)">
+      <ion-icon class="ms-2" name="home"></ion-icon>
+      <div class="activeaddress_detail-item"> {{nactive.neighborhood.neighborhoodName}}
+        Mahallesi
+        {{nactive.street}}{{nactive.street2}} Sokağı/Caddesi No: {{nactive.doorNo}}
+        {{nactive.apartmentName}} </div>
+    </div>
+    <hr class="ion-no-margin">
+    <div class="addAddressBtn" (click)="addNewAddress()">
+      <div class="addAddressBtn_btn ion-text-center">Yeni Adres Ekle</div>
+    </div>
+  </div>
+
+  <!-- SLIDERS -->
+  <swiper *ngIf="sliders" [config]="bannerConfig" class="banners">
+    <ng-template swiperSlide *ngFor="let notify of sliders">
+      <img [src]="notify.imgBase64" (click)="openNotifyModal(notify)" />
+    </ng-template>
+  </swiper>
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Yenilemek için kaydırın."
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+  <!-- ORDER INFO-->
+  <ion-card *ngIf="lastOrders && lastOrders[0].cstStatus < 3" class="order-info">
+    <div class="order-info-head">
+      <ion-icon name="water"></ion-icon>
+      <span>Aktif Sipariş</span>
+    </div>
+    <ion-item>
+      <ion-avatar slot="start">
+        <ion-icon *ngIf="lastOrders[0].cstStatus == 0 || lastOrders[0].cstStatus == 1" name="time-outline"></ion-icon>
+        <ion-icon *ngIf="lastOrders[0].cstStatus == 2" name="bicycle"></ion-icon>
+        <!-- <ion-icon *ngIf="lastOrders[0].cstStatus == 3" name="checkmark-circle-outline"></ion-icon>
+        <ion-icon *ngIf="lastOrders[0].cstStatus == 4" name="close-circle-outline"></ion-icon> -->
+      </ion-avatar>
+      <ion-label>
+        <h5 *ngIf="lastOrders[0].cstStatus == 0">Beklemede</h5>
+        <h5 *ngIf="lastOrders[0].cstStatus == 1">Hazırlanıyor</h5>
+        <h5 *ngIf="lastOrders[0].cstStatus == 2">Yola Çıktı</h5>
+        <!-- <h5 *ngIf="lastOrders[0].cstStatus == 3">Teslim Edildi</h5>
+        <h5 *ngIf="lastOrders[0].cstStatus == 4">İptal Edildi</h5> -->
+        <p>{{lastOrders[0].cstDbName}}</p>
+        <p>{{lastOrders[0].cstCreateDate | date: 'dd-MM-yyyy, HH:mm'}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-card>
+
+
+  <!-- FAV ORDER -->
+
+  <ion-card *ngIf="favoriteorder" class="order-info">
+    <div style="background-color: var(--ion-color-warning-shade) !important;" class="order-info-head"
+      (click)="openFavOrder()">
+      <ion-icon name="heart"></ion-icon>
+      <span>Favori Siparişim</span>
+      <ion-icon class="showFav" *ngIf="showFavOrder" name="chevron-down"></ion-icon>
+      <ion-icon class="showFav" *ngIf="!showFavOrder" name="chevron-up"></ion-icon>
+    </div>
+    <div class="favContainer" *ngIf="showFavOrder">
+      <ion-item lines="full" *ngFor="let fav of favoriteorder.products">
+        <ion-label>
+          <h5>{{fav.productNames}} x {{fav.quantity}} Adet</h5>
+        </ion-label>
+      </ion-item>
+      <ion-button (click)="createFavOrder()">Sipariş Oluştur</ion-button>
+    </div>
+  </ion-card>
+
+  <!--- PRODUCTS --->
+  <div class="list-header">
+    <h1>Ürünler</h1>
+    <hr>
+  </div>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="8" offset-md="2">
+        <div class="product-list ion-padding-horizontal">
+          <!-- <app-product-card *ngFor="let product of products" (clicked)="goToDetailPage(product.id)" [item]="product"></app-product-card> -->
+          <div class="card-item" *ngFor="let product of gid.products">
+            <ion-img [src]="product.imgBase64" (click)="goToDetailPage(product.productId)"></ion-img>
+            <div class="card-content">
+              <h3 class="title" (click)="goToDetailPage(product.productId)">
+                {{ product.bayiUrunTanim }}
+              </h3>
+              <h2 class="subtitle">
+                {{ product.fiyat | number: '1.2' }} ₺
+                <!-- <sup>₺</sup> -->
+              </h2>
+
+              <div class="action_item1" *ngIf="product.quantity >= 1">
+                <ion-buttons>
+                  <ion-button (click)="removeItemToCart(product)">
+                    <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+                  </ion-button>
+                  <div>{{product.quantity }}</div>
+                  <ion-button class="ms-2" (click)="addToCart(product)">
+                    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </div>
+              <div class="action_item2" *ngIf="product.quantity === 0">
+                <ion-buttons class="first_action">
+                  <ion-button class="ms-2" (click)="addToCart(product)">
+                    <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

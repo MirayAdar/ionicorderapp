@@ -1,0 +1,25 @@
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="products">
+      <ion-icon name="home-outline"></ion-icon>
+    </ion-tab-button>
+
+    <!-- <ion-tab-button tab="orders">
+      <ion-icon name="refresh-outline"></ion-icon>
+    </ion-tab-button> -->
+
+    <ion-tab-button tab="shopping-cart">
+      <ion-badge style="height: 18px; width: 18px;" color="primary">{{cartItemCount.value}}</ion-badge>
+      <!-- <ion-badge *ngIf="(carts|async).length" style="--background: #5081ca; height: 15px;">
+        <ion-icon name="water"></ion-icon>
+      </ion-badge> -->
+      <ion-icon name="Cart-outline"></ion-icon>
+    </ion-tab-button>
+
+    <ion-tab-button tab="settings">
+      <ion-icon name="settings-outline"></ion-icon>
+    </ion-tab-button>
+  </ion-tab-bar>
+
+</ion-tabs>

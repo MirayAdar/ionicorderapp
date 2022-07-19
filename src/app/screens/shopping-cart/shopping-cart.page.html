@@ -1,0 +1,125 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Sepetim</ion-title>
+    <ion-buttons>
+      <ion-back-button text="" defaultHref="/home/products">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-buttons *ngIf="cartService.items.length" slot="primary">
+      <ion-button (click)="clearCart()">
+        <ion-icon style="width: 25px" slot="icon-only" name="trash"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-no-padding">
+  <ion-item lines="full" class="dealerInfo" *ngIf="cartService.items.length">
+    <ion-avatar slot="start">
+      <img src="assets/imgs/triplebottle.jpg" />
+    </ion-avatar>
+    <ion-label>
+      <h3>{{gid.getCurrentAddress().dealerName}}</h3>
+      <p>Min: {{gid.getCurrentAddress().dealerMinAmount}} TL</p>
+    </ion-label>
+  </ion-item>
+  <div class="cart" *ngIf="cartService.items.length">
+    <ion-list *ngFor="let item of cartService.items">
+      <ion-item-sliding #sliding>
+        <ion-item lines="full">
+          <ion-label>
+            <img [src]="item.product.imgBase64">
+            <div class="itemInfo">
+              <p class="itemInfo-desc">{{item.product.bayiUrunTanim}}</p>
+              <p>{{item.product.fiyat}} TL</p>
+            </div>
+            <div class="action_item">
+              <ion-buttons>
+                <ion-button (click)="decreaseQuantity(item.product)">
+                  <ion-icon slot="icon-only" name="remove-circle"></ion-icon>
+                </ion-button>
+                <div>{{item.product.quantity }}</div>
+                <ion-button class="ms-2" (click)="increaseQuantity(item.product)">
+                  <ion-icon slot="icon-only" name="add-circle"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </div>
+          </ion-label>
+        </ion-item>
+        <ion-item-options>
+          <ion-item-option color="danger" (click)="removeProduct(item.product)">
+            <ion-icon name="trash-outline" slot="icon-only"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+    <div>
+      <div class="cart_info">
+        <h2>Sipariş Notu</h2>
+        <hr>
+        <ion-textarea [(ngModel)]="cartNote" placeholder="Sipariş notunuzu bu alana yazabilirsiniz"></ion-textarea>
+      </div>
+
+      <div class="cart_info">
+        <h2>Seçili Adresim</h2>
+        <hr>
+        <ion-textarea rows="1" disabled>{{gid.getCurrentAddress().neighborhood.neighborhoodName}} Mahallesi
+          {{gid.getCurrentAddress().street}} {{gid.getCurrentAddress().street2}}
+          {{gid.getCurrentAddress().apartmentName}}
+          Apartmanı No: {{gid.getCurrentAddress().doorNo}} Kapı No: {{gid.getCurrentAddress().inDoorNo}}
+          {{gid.getCurrentAddress().district.districtName}}/{{gid.getCurrentAddress().city.cityName}}<br>({{gid.getCurrentAddress().addressDescription}})
+        </ion-textarea>
+      </div>
+
+      <div class="cart_info mt-2">
+        <h2>Ödeme Yöntemi</h2>
+        <hr>
+        <!-- <ion-radio-group>
+        <ion-item>
+          <ion-label>Kredi Kartı ile Öde</ion-label>
+          <ion-radio value="kk"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Kapıda Kredi Kartı ile Öde</ion-label>
+          <ion-radio value="kakk"></ion-radio>
+        </ion-item>
+        <ion-item>
+          <ion-label>Kapıda Nakit Öde</ion-label>
+          <ion-radio value="kapıda"></ion-radio>
+        </ion-item>
+      </ion-radio-group> -->
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymenttype" id="3" (change)="changeGender($event)"
+            checked>
+          <label class="form-check-label" for="3">
+            Kredi Kartı ile Öde
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymenttype" id="2" (change)="changeGender($event)">
+          <label class="form-check-label" for="2">
+            Kapıda Kredi Kartı ile Öde
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="paymenttype" id="1" (change)="changeGender($event)">
+          <label class="form-check-label" for="1">
+            Kapıda Nakit Öde
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="cart-confirm">
+      <div>
+        <span>Toplam:</span>
+        <span>{{cartService.total}} TL</span>
+      </div>
+      <ion-button class="confirmCartBtn" (click)="completePayment()">{{buttonName}}</ion-button>
+    </div>
+  </div>
+  <div class="empty-cart text-center" *ngIf="!cartService.items.length">
+    <ion-icon name="Cart-outline"></ion-icon>
+    <p>Sepetiniz Boş</p>
+  </div>
+</ion-content>

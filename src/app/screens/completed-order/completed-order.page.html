@@ -1,0 +1,32 @@
+<ion-header collapse="fade">
+  <ion-toolbar color="primary">
+    <ion-title>{{gid.appName}}</ion-title>
+    <ion-buttons>
+      <ion-back-button text="" (click)="backToHome()"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <img src="assets/imgs/orderdone.svg"> -->
+  <ion-img class="ion-padding" src="assets/imgs/order.svg"></ion-img>
+  <div class="favOrder" *ngIf="isFavOrder != 1">
+    <ion-card class="ion-no-margin">
+      <div class="favOrder-item">Favori sipariş olarak kaydedilsin mi?</div>
+      <ion-list *ngFor="let fav of gid.order.products">
+        <ion-item lines="full">
+          <ion-label>
+            <ion-img [src]="fav.imgBase64"></ion-img>
+            <div class="itemInfos">
+              <p>{{fav.productNames}}</p>
+              <p>{{fav.priceAmount}} TL</p>
+              <p>{{fav.quantity}} Adet</p>
+            </div>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-button class="confirmCartBtn" (click)="saveFavOrder()"> Kaydet </ion-button>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -1,0 +1,10 @@
+<div class="notify">
+  <div class="notify-close">
+    <ion-icon slot="end" name="close-outline" (click)="closeNotifyModal()"></ion-icon>
+  </div>
+  <div>
+    <h4 class="ion-text-center mb-3">{{header}}</h4>
+    <img class=" mb-3" [src]="imgBase64">
+    <div class="notify-item">{{details}}</div>
+  </div>
+</div>

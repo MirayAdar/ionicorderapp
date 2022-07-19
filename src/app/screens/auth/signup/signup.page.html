@@ -1,0 +1,194 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div [style.display]="processType=='register' ? 'block' : 'none'">
+          <h1>Yeni Hesap Oluştur,</h1>
+          <h5 style="text-align: start !important;">Yeni bir hesap oluşturarak uygulamamızı kullanmaya hemen başlayın!
+          </h5>
+        </div>
+        <div [style.display]="processType=='updateaddress' ? 'block' : 'none'">
+          <div class="content-header">
+            <ion-buttons>
+              <ion-button text="" class="ml-1" (click)="backToSettings()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <h1 style="margin-left: 25px;
+            margin-right: 25px;">Adresini Güncelle</h1>
+          </div>
+          <h5>Lütfen adresinizi eksiksiz girdiğinizden emin olun!</h5>
+        </div>
+
+        <div [style.display]="processType == 'addaddress' ? 'block' : 'none'">
+          <div class="content-header">
+            <ion-buttons>
+              <ion-button text="" class="ml-1" (click)="backToSettings()">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+            <h1>Yeni Adres Ekle</h1>
+          </div>
+          <h5>Lütfen adresinizi eksiksiz girdiğinizden emin olun!</h5>
+        </div>
+
+        <div class="signup">
+
+          <form class="addressform" [formGroup]="signupForm">
+            <ion-list>
+              <ion-item lines="none" [style.display]="processType=='register' ? 'block' : 'none'">
+                <ion-label class="text-label" position="floating">Ad
+                </ion-label>
+                <ion-input formControlName="name"></ion-input>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('name').invalid && signupForm.get('name').touched">
+                <span *ngIf="signupForm.get('name').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none" [style.display]="processType=='register' ? 'block' : 'none'">
+                <ion-label class="text-label" position="floating">Soyad
+                </ion-label>
+                <ion-input formControlName="surname"></ion-input>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('surname').invalid && signupForm.get('surname').touched">
+                <span *ngIf="signupForm.get('surname').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none" [style.display]="processType=='register' ? 'block' : 'none'">
+                <ion-label style="position: fixed;
+                margin-top: -10px;
+                background-color: var(--ion-color-primary-contrast);
+                z-index: 10;" position="stacked">Telefon
+                </ion-label>
+                <ion-input [value]="gid.phone" disabled></ion-input>
+              </ion-item>
+
+              <ion-item lines="none">
+                <ion-label class="text-label" position="floating">Adres Başlığı
+                </ion-label>
+                <ion-input formControlName="addressTitle"></ion-input>
+              </ion-item>
+              <div class="formControl"
+                *ngIf="signupForm.get('addressTitle').invalid && signupForm.get('addressTitle').touched">
+                <span *ngIf="signupForm.get('addressTitle').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none">
+                <ion-label class="select-label">İl</ion-label>
+                <ion-select (ionChange)="CitySelected()" formControlName="city" okText="Seç" cancelText="Vazgeç"
+                  placeholder="Seçiniz">
+                  <ion-select-option *ngFor="let city of cities" [value]="city.cityId">
+                    {{city.cityName}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('city').invalid && signupForm.get('city').touched">
+                <span *ngIf="signupForm.get('city').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+
+              <ion-item lines="none">
+                <ion-label class="select-label">İlçe</ion-label>
+                <ion-select (ionChange)="DistrictSelected()" formControlName="district" okText="Seç" cancelText="Vazgeç"
+                  placeholder="Seçiniz">
+                  <ion-select-option *ngFor="let district of districts" [value]="district.districtId">
+                    {{district.districtName}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('district').invalid && signupForm.get('district').touched">
+                <span *ngIf="signupForm.get('district').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none">
+                <ion-label class="select-label">Mahalle</ion-label>
+                <ion-select formControlName="neighborhood" okText="Seç" cancelText="Vazgeç" placeholder="Seçiniz">
+                  <ion-select-option *ngFor="let neighborhood of neighborhoods" [value]="neighborhood.neighborhoodId">
+                    {{neighborhood.neighborhoodName}}
+                  </ion-select-option>
+                </ion-select>
+              </ion-item>
+              <div class="formControl"
+                *ngIf="signupForm.get('neighborhood').invalid && signupForm.get('neighborhood').touched">
+                <span *ngIf="signupForm.get('neighborhood').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none">
+                <ion-label class="text-label" position="floating">Sokak</ion-label>
+                <ion-input formControlName="street"></ion-input>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('street').invalid && signupForm.get('street').touched">
+                <span *ngIf="signupForm.get('street').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item lines="none">
+                <ion-label class="text-label" position="floating">Cadde</ion-label>
+                <ion-input formControlName="street2"></ion-input>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('street2').invalid && signupForm.get('street2').touched">
+                <span *ngIf="signupForm.get('street2').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+
+              <ion-item lines="none">
+                <ion-label class="text-label" position="floating">Apartman Adı
+                </ion-label>
+                <ion-input formControlName="apartmentName"></ion-input>
+              </ion-item>
+              <div class="formControl"
+                *ngIf="signupForm.get('apartmentName').invalid && signupForm.get('apartmentName').touched">
+                <span *ngIf="signupForm.get('apartmentName').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>
+                    <ion-item lines="none">
+                      <ion-label class="text-label" position="floating">Kapı No
+                      </ion-label>
+                      <ion-input formControlName="doorNo"></ion-input>
+                    </ion-item>
+                    <div class="formControl"
+                      *ngIf="signupForm.get('doorNo').invalid && signupForm.get('doorNo').touched">
+                      <span *ngIf="signupForm.get('doorNo').errors.required">*Bu alan boş bırakılamaz.</span>
+                    </div>
+                  </ion-col>
+                  <ion-col>
+                    <ion-item lines="none">
+                      <ion-label class="text-label" position="floating">Daire No
+                      </ion-label>
+                      <ion-input formControlName="inDoorNo"></ion-input>
+                    </ion-item>
+                    <div class="formControl"
+                      *ngIf="signupForm.get('inDoorNo').invalid && signupForm.get('inDoorNo').touched">
+                      <span *ngIf="signupForm.get('inDoorNo').errors.required">*Bu alan boş bırakılamaz.</span>
+                    </div>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+              <ion-item lines="none">
+                <ion-label class="text-label" position="floating">Kat</ion-label>
+                <ion-input formControlName="floor"></ion-input>
+              </ion-item>
+              <div class="formControl" *ngIf="signupForm.get('floor').invalid && signupForm.get('floor').touched">
+                <span *ngIf="signupForm.get('floor').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+
+              <ion-item style="height: 70px;" lines="none">
+                <ion-label class="text-label" position="floating">Adres Açıklaması
+                </ion-label>
+                <ion-textarea formControlName="addressDescription">
+                </ion-textarea>
+              </ion-item>
+              <div class="formControl"
+                *ngIf="signupForm.get('addressDescription').invalid && signupForm.get('addressDescription').touched">
+                <span *ngIf="signupForm.get('addressTitle').errors.required">*Bu alan boş bırakılamaz.</span>
+              </div>
+              <ion-button expand="block" (click)="handleAddress()">Devam</ion-button>
+            </ion-list>
+          </form>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,24 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+
+import { IonicModule } from '@ionic/angular';
+
+import { HomePageRoutingModule } from './home-routing.module';
+
+import { HomePage } from './home.page';
+import { SharedModule } from '../components/shared.module';
+import { NotificationModalComponent } from '../notification-modal/notification-modal.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    HomePageRoutingModule,
+    SharedModule
+  ],
+  declarations: [HomePage]
+  
+})
+export class HomePageModule {}

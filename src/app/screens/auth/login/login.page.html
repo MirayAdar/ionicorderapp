@@ -1,0 +1,32 @@
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <h1>Hoşgeldiniz,</h1>
+        <h3>Lütfen giriş yapınız!</h3>
+
+        <form class="login" [formGroup]="loginForm">
+          <div class="phone">
+            <ion-item lines="none">
+              <ion-label class="text-label" position="stacked">Telefon
+              </ion-label>
+              <ion-input placeholder="(5xx) xxx-xx-xx" simpleMask="(999) 999-99-99" inputmode="tel"
+                formControlName="phone">
+              </ion-input>
+            </ion-item>
+          </div>
+          <div class="formControl" *ngIf="submitted && loginForm.get('phone').invalid">
+            <span>*Lütfen geçerli bir telefon giriniz.</span>
+          </div>
+          <div class="policy">
+            <ion-item lines="none">
+              <ion-checkbox (click)="openPopup($event)" class="ion-no-margin" slot="start"></ion-checkbox>
+              <ion-label text-wrap> Kullanım koşullarını okudum ve kabul ediyorum.</ion-label>
+            </ion-item>
+          </div>
+          <ion-button expand="block" [disabled]="!acceptKvkk" (click)="sendSmsVerification()">Devam Et</ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

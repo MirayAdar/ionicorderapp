@@ -1,0 +1,19 @@
+{
+    "appId": "com.suuygulamasi.ionic",
+    "appName": "Su Uygulaması",
+    "bundledWebRuntime": false,
+    "npmClient": "npm",
+    "webDir": "www",
+    "plugins": {
+        "SplashScreen": {
+            "launchShowDuration": 0
+        },
+        "PushNotifications": {
+            "presentationOptions": [
+                "badge",
+                "sound",
+                "alert"
+            ]
+        }
+    }
+}

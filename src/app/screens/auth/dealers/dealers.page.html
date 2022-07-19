@@ -1,0 +1,37 @@
+<ion-content>
+  <ion-grid class="ion-no-padding" style="height: 100%;">
+    <ion-row style="height: 100%;">
+      <ion-col class="ion-no-padding" size-md="6" offset-md="3">
+        <form class="dealer">
+          <div class="dealer_header ion-padding mt-3">
+            <h3>Hoşgeldin {{gid.customer.name}}!</h3>
+            <h5>Lütfen aşağıdan size uygun bayi <br> seçimini yapınız</h5>
+          </div>
+          <div *ngFor="let dlr of dealers">
+            <!-- <div *ngIf="dlr.IsOutOfService" class="nearestService ion-padding-end">
+              <div>En yakın teslimat zamanı: {{dlr.NearestServiceTime}} </div>
+            </div> -->
+            <div class="dealer_container ion-padding" (click)="selectDealer(dlr.bayiId)"
+              [class.is-selected]="dlr.bayiId==selectedDealerID">
+              <div class="dealer_img">
+                <img src="assets/imgs/triplebottle.jpg">
+              </div>
+              <div class="dealer_infos ion-padding">
+                <h3>{{dlr.bayiAdi}}</h3>
+                <div class="mb-1">{{dlr.address}}</div>
+                <div class="mb-1">{{dlr.phone}}</div>
+                <div>
+                  <img src="assets/icon/coins.svg">
+                  <span class="ms-1">Min. {{dlr.minPrice}} TL</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ion-button [disabled]="seletedDealerID==''" expand='block' (click)="clickSignUp()">
+            {{buttonName}}
+          </ion-button>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

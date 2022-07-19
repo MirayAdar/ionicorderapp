@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Geçmiş Siparişlerim</ion-title>
+    <ion-buttons>
+      <ion-back-button text="" defaultHref="/home/settings">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="empty-order" *ngIf="lastOrders.length == 0">
+
+    <ion-icon name="water"></ion-icon>
+    <p>Geçmiş Siparişiniz Bulunmuyor</p>
+
+  </div>
+  <div class="last_orders" *ngFor="let order of lastOrders">
+    <ion-card class="last_orders-item">
+      <div class="last_orders-info">
+        <ion-img src="assets/imgs/triplebottle.jpg"></ion-img>
+        <p>{{order.cstCreateDate | date: 'dd-MM-yyyy, HH:mm'}}</p>
+      </div>
+      <div class="last_orders-details">
+        <div class="last_orders-details-head">
+          <h3>{{order.cstDbName}}</h3>
+          <p>{{order.cstPriceAmount}} TL</p>
+        </div>
+        <div>{{order.cstProduct}} x {{order.cstQuantity}}</div>
+        <!-- <div>{{order.cstNote}}</div> -->
+        <ion-button *ngIf="order.cstStatus == 0 || order.cstStatus == 1" slot="end" (click)="cancelOrder(order.id)">
+          İptal Et
+        </ion-button>
+        <div style="color: var(--ion-color-danger);" class="orders-statu" *ngIf="order.cstStatus == 4">İptal
+          Edildi</div>
+        <div style="color: var(--ion-color-success-shade);" class="orders-statu" *ngIf="order.cstStatus == 3">Teslim
+          Edildi</div>
+        <div style="color: var(--ion-color-primary-shade);" class="orders-statu" *ngIf="order.cstStatus == 2">Yola Çıktı
+        </div>
+      </div>
+    </ion-card>
+  </div>
+
+</ion-content>

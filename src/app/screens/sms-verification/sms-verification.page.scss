@@ -1,0 +1,68 @@
+ion-content {
+  // --background: linear-gradient(
+  //   91.82deg,
+  //   #2e93e5 2.33%,
+  //   rgba(46, 147, 229, 0.6) 96.63%
+  // );
+  --offset-top: 2.5rem !important;
+  --offset-bottom: 600px !important;
+  --background: url("/assets/imgs/smscode-background.svg") no-repeat center
+    center/cover;
+  ion-back-button {
+    position: absolute;
+    margin-top: 1.5rem;
+  }
+}
+
+ion-footer {
+  height: 88%;
+  ion-list {
+    height: 100%;
+    border-radius: 20px 20px 0 0;
+    display: flex;
+    flex-direction: column;
+    ion-list-header {
+      ion-label {
+        font-weight: bold;
+        font-size: 1.8em;
+      }
+    }
+    ion-item {
+      ion-label {
+        font-size: 0.9em;
+        overflow: visible;
+        ion-row {
+          ion-col {
+            ion-input {
+              font-size: 1.3em;
+              --background: var(--ion-color-light);
+              display: inline-block;
+              width: 7.5vh;
+              height: 7.5vh;
+              border-radius: 5px;
+              border: 1px solid var(--ion-color-light-shade);
+              padding: 0.4em 0 0 0.4em !important;
+            }
+          }
+        }
+      }
+    }
+    ion-button {
+      --box-shadow: none;
+      --border-radius: 10px;
+      --background: linear-gradient(90deg, #5081ca 0%, #09306b 100%);
+      height: 48px;
+      font-size: 1rem;
+      //color: #fff;
+      //margin-top: 1rem;
+      //text-transform: initial;
+    }
+  }
+  .sendSms {
+    text-decoration: underline;
+    text-align: center;
+    font-weight: 600;
+    color: var(--ion-color-medium-shade);
+    margin-top: 0.5rem;
+  }
+}

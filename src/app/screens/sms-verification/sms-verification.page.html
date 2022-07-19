@@ -1,0 +1,41 @@
+<ion-content [fullscreen]="true">
+  <ion-back-button color="light" text="" defaultHref="/login"></ion-back-button>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+
+  <ion-list lines="none">
+    <ion-list-header class="ion-margin">
+      <ion-label>SMS Doğrulama</ion-label>
+    </ion-list-header>
+
+    <ion-item class="ion-padding" lines="none">
+      <ion-label>
+        Doğrulama Kodu:
+        <ion-row class="ion-padding-top ion-text-center">
+          <ion-col size-md="6" offset-md="3">
+            <ion-input #otp1 autofocus="true" required maxlength="1" type="number" inputmode="numeric"
+              [(ngModel)]="otpString[0]" (keyup)="keyup(otp2)">
+            </ion-input>
+
+            <ion-input #otp2 class="ion-margin-start" autofocus="true" required maxlength="1" type="number"
+              inputmode="numeric" [(ngModel)]="otpString[1]" (keyup)="keyup(otp3)">
+            </ion-input>
+
+            <ion-input #otp3 class="ion-margin-start" autofocus="true" required maxlength="1" type="number"
+              inputmode="numeric" [(ngModel)]="otpString[2]" (keyup)="keyup(otp4)">
+            </ion-input>
+
+            <ion-input #otp4 class="ion-margin-start" autofocus="true" required maxlength="1" type="number"
+              inputmode="numeric" [(ngModel)]="otpString[3]">
+            </ion-input>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+
+    </ion-item>
+    <ion-button class="ion-margin" expand="block" (click)="Validate()">Doğrula</ion-button>
+    <div class="sendSms" (click)="sendSmsAgain()">Kod gelmedi.Tekrar Gönder!</div>
+  </ion-list>
+
+</ion-footer>

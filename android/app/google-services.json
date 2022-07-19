@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "588466685668",
+    "project_id": "su-siparis-54c37",
+    "storage_bucket": "su-siparis-54c37.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:588466685668:android:3a2e612ffd0e09f775cef1",
+        "android_client_info": {
+          "package_name": "com.suuygulamasi.ionic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "588466685668-mmbv7ltids7h9v45m0m8pa9idlbiluft.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq1ogGNKzsBfJPKIt2O-hR6anSI1YHczo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "588466685668-mmbv7ltids7h9v45m0m8pa9idlbiluft.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,22 @@
+<ion-content>
+
+  <div class="header">
+    <ion-back-button color="light" text="Geri" defaultHref="/home/products"></ion-back-button>
+  </div>
+  <div class="card" *ngIf="product">
+    <div class="image">
+      <ion-img [src]="product.imgBase64"></ion-img>
+    </div>
+    <div class="card-content">
+      <div class="card-title">
+        <h1>{{product.bayiUrunTanim}}</h1>
+        <p class="ion-text-center"> {{ product.fiyat | number: '1.2' }} ₺</p>
+      </div>
+      <div class="ion-text-center" class="about">
+        <h2>Ürün Hakkında</h2>
+        <p>{{ product.description }}</p>
+      </div>
+      <ion-button (click)="addItemToCart()">Sepete Ekle</ion-button>
+    </div>
+  </div>
+</ion-content>

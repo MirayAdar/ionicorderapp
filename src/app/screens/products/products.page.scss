@@ -1,0 +1,228 @@
+ion-content {
+  // --padding-start: 2rem;
+  // --padding-end: 2rem;
+  ion-icon {
+    height: 50px;
+    width: 18px;
+    color: var(--ion-color-dark-tint);
+  }
+  .activeaddress {
+    box-sizing: border-box;
+    height: 7%;
+    background: var(--ion-color-warning);
+    border-bottom: 1px solid var(--ion-color-medium-tint);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+    display: flex;
+    &_detail {
+      display: flex;
+      align-items: center;
+      height: 99%;
+      width: 85%;
+      background: var(--ion-color-primary-contrast);
+      border-radius: 0 30px 30px 0;
+
+      &-item {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-left: 0.2em;
+        padding-top: 0.2em;
+      }
+    }
+  }
+  .choose-address {
+    box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;
+    &-item {
+      display: flex;
+      align-items: center;
+    }
+
+    .addAddressBtn {
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &_btn {
+        height: 65%;
+        padding-top: 2px;
+        border: 2px dotted #a8c3ed;
+        border-radius: 8px;
+        width: 60%;
+      }
+    }
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    margin-top: 3rem;
+
+    h1 {
+      font: size 3rem;
+      font-weight: 600;
+      color: #515151;
+      margin: 0;
+    }
+
+    .avatar {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      overflow: hidden;
+    }
+  }
+
+  .banners {
+    margin-top: 1em;
+    height: 22vh;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 4px;
+      box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    }
+  }
+
+  .order-info {
+    display: flex;
+    flex-direction: column;
+    margin: 0 10%;
+    border: 1px solid var(--ion-color-medium-tint);
+    margin: 10px 6%;
+    &-head {
+      background-color: var(--ion-color-primary);
+      display: flex;
+      align-items: center;
+      span {
+        color: var(--ion-color-primary-contrast);
+        margin-left: 5px;
+        font-size: 1rem;
+      }
+      ion-icon {
+        color: var(--ion-color-primary-contrast);
+        margin-left: 10px;
+      }
+      .showFav {
+        position: absolute;
+        right: 10px;
+        width: 7%;
+      }
+    }
+    .favContainer {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+    }
+    ion-button {
+      --background: #f3f3f3;
+      color: #1f1f1f;
+      margin: 0.4rem;
+    }
+    ion-item {
+      ion-icon {
+        width: 35px;
+        height: 35px;
+      }
+    }
+  }
+
+  .list-header {
+    margin: 1.7rem 0 1.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    h1 {
+      font-weight: 700;
+      color: #515151;
+      font-size: 1.7rem;
+    }
+    hr {
+      width: 70%;
+      color: var(--ion-color-medium-tint);
+    }
+  }
+
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .card-item {
+      width: 48%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+
+      ion-img {
+        height: 150px;
+        width: 160px;
+        border: 1.5px solid lightsteelblue;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .card-content {
+        margin: 5px;
+
+        .title {
+          font-size: 1rem;
+          margin-bottom: 0.2rem;
+          color: #7a7a7a;
+          font-weight: 600;
+          text-align: center;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+          color: #1f1f1f;
+          font-weight: 700;
+          margin-top: 0.5rem;
+          text-align: center;
+        }
+
+        .action_item1 {
+          position: absolute;
+          right: 15px;
+          top: 0;
+
+          ion-buttons {
+            position: absolute;
+            right: 15px;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #c4c4c4;
+            border-radius: 25px;
+            background: var(--ion-color-primary-contrast);
+            width: 85px;
+
+            ion-icon {
+              color: #339dff;
+              height: 34px;
+              width: 34px;
+            }
+          }
+        }
+        .action_item2 {
+          ion-buttons {
+            position: absolute;
+            right: 15px;
+            top: 0;
+          }
+          ion-icon {
+            color: #339dff;
+            height: 34px;
+            width: 34px;
+          }
+        }
+      }
+    }
+  }
+}
